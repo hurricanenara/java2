@@ -1,7 +1,13 @@
 package com.sparta.week02;
 
+import com.sparta.week02.domain.Course;
+import com.sparta.week02.domain.CourseRepository;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import java.util.List;
 
 @SpringBootApplication
 public class Week02Application {
@@ -10,4 +16,19 @@ public class Week02Application {
         SpringApplication.run(Week02Application.class, args);
     }
 
+    // Week02Application.java 의 main 함수 아래에 붙여주세요.
+    @Bean
+    public CommandLineRunner demo(CourseRepository repository) {
+        return (args) -> {
+            Course course1 = new Course("Java", "Nara");
+            repository.save(course1);
+
+            List<Course> courselist = repository.findAll();
+            for (int i = 0; i < courselist.size(); i++) {
+                Course c = courselist.get(i);
+                System.out.println(c.getTitle());
+                System.out.println(c.getTutor());
+            }
+        };
+    }
 }
