@@ -18,6 +18,8 @@ public class Course extends Timestamped {
     @Column(nullable = false)
     private String tutor;
 
+    public Long getId() { return this.id; }
+
     public String getTitle() {
         return this.title;
     }

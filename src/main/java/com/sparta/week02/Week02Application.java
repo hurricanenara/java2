@@ -22,15 +22,32 @@ public class Week02Application {
     @Bean
     public CommandLineRunner demo(CourseRepository repository) {
         return (args) -> {
-            Course course1 = new Course("Java", "Nara");
-            repository.save(course1);
 
-            List<Course> courselist = repository.findAll();
-            for (int i = 0; i < courselist.size(); i++) {
-                Course c = courselist.get(i);
-                System.out.println(c.getTitle());
-                System.out.println(c.getTutor());
+            // 데이터 저장하기
+            repository.save(new Course("Java 101", "Nara L."));
+
+// 데이터 전부 조회하기
+            List<Course> courseList = repository.findAll();
+            for (int i = 0; i < courseList.size(); i++) {
+                Course course = courseList.get(i);
+                System.out.println(course.getId());
+                System.out.println(course.getTitle());
+                System.out.println(course.getTutor());
             }
+
+// 데이터 하나 조회하기
+            Course course = repository.findById(1L).orElseThrow(
+                    () -> new IllegalArgumentException("No such id") // new NullPointerException("No such id")
+            );
+//            Course course1 = new Course("Java", "Nara");
+//            repository.save(course1);
+//
+//            List<Course> courselist = repository.findAll();
+//            for (int i = 0; i < courselist.size(); i++) {
+//                Course c = courselist.get(i);
+//                System.out.println(c.getTitle());
+//                System.out.println(c.getTutor());
+//            }
         };
     }
 }
