@@ -2,9 +2,11 @@ package com.sparta.week02.service;
 
 import com.sparta.week02.domain.Course;
 import com.sparta.week02.domain.CourseRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@RequiredArgsConstructor
 @Service // 스프링에게 이 클래스는 서비스임을 명시
 public class CourseService {
 
@@ -13,9 +15,9 @@ public class CourseService {
 
     // 생성자를 통해, Service 클래스를 만들 때 꼭 Repository를 넣어주도록
     // 스프링에게 알려줌
-    public CourseService(CourseRepository courseRepository) {
-        this.courseRepository = courseRepository;
-    }
+//    public CourseService(CourseRepository courseRepository) {
+//        this.courseRepository = courseRepository;
+//    } // Processable via @RequiredArgsConstructor instead!
 
     @Transactional // SQL 쿼리가 일어나야 함을 스프링에게 알려줌
     public Long update(Long id, Course course) {
