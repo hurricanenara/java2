@@ -92,17 +92,17 @@ public class Week02Application {
             }
 
 //            Course new_course = new Course("웹개발의 봄, Spring", "임민영");
-            CourseRequestDto requestDto = new CourseRequestDto("웹개발의 봄, Spring", "임민영");
-            courseService.update(1L, requestDto);
-            courseList = courseRepository.findAll();
-            for (int i=0; i<courseList.size(); i++) {
-                Course course = courseList.get(i);
-                System.out.println(course.getId());
-                System.out.println(course.getTitle());
-                System.out.println(course.getTutor());
-            }
+//            CourseRequestDto requestDto = new CourseRequestDto("웹개발의 봄, Spring", "임민영");
+//            courseService.update(1L, requestDto);
+//            courseList = courseRepository.findAll();
+//            for (int i=0; i<courseList.size(); i++) {
+//                Course course = courseList.get(i);
+//                System.out.println(course.getId());
+//                System.out.println(course.getTitle());
+//                System.out.println(course.getTutor());
+//            }
 
-            courseRepository.deleteAll();
+//            courseRepository.deleteAll();
         };
     }
 }
